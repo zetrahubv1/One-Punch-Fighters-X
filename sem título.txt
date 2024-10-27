@@ -649,6 +649,19 @@ Tabs.Teleports:AddButton({
     end
 })
 
+
+
+local Input = Tabs.Others:AddInput("Input", {
+    Title = "Input",
+    Default = "Default",
+    Placeholder = "Placeholder",
+    Numeric = false, -- Altera para true se você quiser que apenas números sejam aceitos
+    Finished = false, -- Somente chama o callback ao pressionar Enter
+    Callback = function(Value)
+        print("Input changed:", Value)
+    end
+})
+
 Input:OnChanged(function(Value)
     print("Input updated:", Value)
 end)
