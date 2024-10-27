@@ -462,6 +462,21 @@ end)
 -- Definindo o estado inicial do Toggle
 Toggle:SetValue(false)
 
+local Input = Tabs.Player:AddInput("Input", {
+    Title = "Input",
+    Default = "Default",
+    Placeholder = "Placeholder",
+    Numeric = false, -- Altera para true se você quiser que apenas números sejam aceitos
+    Finished = false, -- Somente chama o callback ao pressionar Enter
+    Callback = function(Value)
+        print("Input changed:", Value)
+    end
+})
+
+Input:OnChanged(function(Value)
+    print("Input updated:", Value)
+end)
+
 local InfiniteJumpSection = Tabs.Player:AddSection("Infinite Jump")
 
 local Players = game:GetService("Players")
@@ -648,23 +663,6 @@ Tabs.Teleports:AddButton({
         teleportTo(halloweenPosition)
     end
 })
-
-
-
-local Input = Tabs.Others:AddInput("Input", {
-    Title = "Input",
-    Default = "Default",
-    Placeholder = "Placeholder",
-    Numeric = false, -- Altera para true se você quiser que apenas números sejam aceitos
-    Finished = false, -- Somente chama o callback ao pressionar Enter
-    Callback = function(Value)
-        print("Input changed:", Value)
-    end
-})
-
-Input:OnChanged(function(Value)
-    print("Input updated:", Value)
-end)
 
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
